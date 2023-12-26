@@ -25,6 +25,7 @@ export default function Login({ api }) {
                 window.location.href = '/index';
             }
             else {
+                console.log(response);
                 setMsg(response.data.status);
             }
         });

@@ -6,8 +6,8 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-const api = 'http://localhost:5002/api';
-//const api = 'https://sample-project-667a4.web.app/api';
+//const api = 'http://localhost:5002/api';
+const api = 'https://sample-project-667a4.web.app/api';
 
 const router = createBrowserRouter([
   {
