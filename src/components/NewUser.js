@@ -9,7 +9,6 @@ export default function NewUser({api}) {
     const firstName = useRef("");
     const lastName = useRef("");
     const email = useRef("");
-    const balance = useRef("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -19,8 +18,7 @@ export default function NewUser({api}) {
             first: firstName.current,
             last: lastName.current,
             pass: passWord.current,
-            email: email.current,
-            balance: balance.current
+            email: email.current
         }
 
         axios.post(`${api}/newUser`, body).then((response) => {
@@ -91,17 +89,6 @@ export default function NewUser({api}) {
                                 className="login-input"
                                 id="email"
                                 onChange={(e) => (email.current = e.target.value)}
-                            />
-                        </div>
-                        <div className="login-input-group">
-                            <label htmlFor="username" className="login-label">
-                                Current Balance
-                            </label>
-                            <input
-                                type="text"
-                                className="login-input"
-                                id="balance"
-                                onChange={(e) => (balance.current = e.target.value)}
                             />
                         </div>
                         <button type="submit" className="login-button">

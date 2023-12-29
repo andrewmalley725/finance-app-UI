@@ -3,13 +3,34 @@ import axios from 'axios';
 
 
 export default function Home({ api }){
-    const [data, setData] = useState({accounts: []})
+    const [data, setData] = useState({accounts: []});
+    const [show, setShow] = useState(false);
+    const [render, setRender] = useState('');
+
 
     useEffect(() => {
         axios.get(`${api}/accounts/${localStorage.getItem('userId')}`).then((response) => {
             setData(response.data);
         })
     }, [api]);
+
+    const renderContent = () => {
+        if (render === 'expense'){
+            return(
+                <div>
+                    Amount: <input type="number"></input><br/>
+                    Account:
+                </div>
+            );
+        }
+        else {
+            return(
+                <div>
+                    Payday: <input type="number"></input><br/>
+                </div>
+            )
+        }
+    }
 
     console.log(data);
     return(
@@ -41,6 +62,10 @@ export default function Home({ api }){
                     }
                 </tbody>
             </table> : <h4>You don't have any accounts set up</h4>}
+            <button type="button" onClick={() => {setShow(!show); setRender('expense')}}>Add Expense</button>
+            <div style={{display: show ? 'block' : 'none'}}>
+                {renderContent()}
+            </div>
         </div>
     );
 }
